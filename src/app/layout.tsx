@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
+import { MediaProvider } from "@/components/media-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
@@ -35,13 +36,15 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <TooltipProvider>
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>
-              <AppHeader />
-              <div className="flex-1 p-4 md:p-6">{children}</div>
-            </SidebarInset>
-          </SidebarProvider>
+          <MediaProvider>
+            <SidebarProvider>
+              <AppSidebar />
+              <SidebarInset>
+                <AppHeader />
+                <div className="flex-1 p-4 md:p-6">{children}</div>
+              </SidebarInset>
+            </SidebarProvider>
+          </MediaProvider>
         </TooltipProvider>
       </body>
     </html>
